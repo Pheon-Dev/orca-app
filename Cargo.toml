@@ -6,4 +6,23 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+console_error_panic_hook = "0.1.7"
+console_log = "1.0.0"
 leptos = { version = "0.4.3", features = ["csr", "nightly"] }
+log = "0.4.19"
+serde = { version = "1.0.171", features = ["derive"] }
+serde_json = "1.0.103"
+uuid = { version = "1.4.0", features = ["v4", "js", "serde"] }
+web-sys = { version = "0.3.64", features = ["Storage"] }
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.37"
+
+[features]
+default = ["csr"]
+csr = ["leptos/csr"]
+hydrate = ["leptos/hydrate"]
+ssr = ["leptos/ssr"]
+
+[package.metadata.cargo-all-features]
+skip_feature_sets = [["csr", "ssr"], ["csr", "hydrate"], ["ssr", "hydrate"]]
